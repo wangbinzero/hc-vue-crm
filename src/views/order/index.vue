@@ -1,11 +1,11 @@
 <template>
-  <div class="order-container">
-<!--    1.listLoading 加载动画-->
-<!--    2.list 数据集合-->
+  <div class="order-container" border fit highlight-current-row style="width: 100%">
+    <!--    1.listLoading 加载动画-->
+    <!--    2.list 数据集合-->
     <el-table v-loading="listLoading" :data="list">
       <el-table-column align="center" label="ID" width="80%">
         <template slot-scope="scope">
-          <span>{{ scope.row.id}}</span>
+          <span>{{ scope.row.id }}</span>
         </template>
       </el-table-column>
       <el-table-column align="center" label="订单编号">
@@ -28,7 +28,7 @@
       </el-table-column>
       <el-table-column align="center" label="操作">
         <template slot-scope="scope">
-          <router-link :to="'#' +scope.row.id">
+          <router-link :to="'/orders/edit/' +scope.row.id">
             <el-button type="primary" size="small" icon="el-icon-edit">
               编辑
             </el-button>
@@ -36,7 +36,7 @@
         </template>
       </el-table-column>
     </el-table>
-    <pagination v-show="total>0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit" @pagination="getList"></pagination>
+    <pagination v-show="total>0" :total="total" :page.sync="listQuery.page" :limit.sync="listQuery.limit" @pagination="getList" />
   </div>
 </template>
 <script>
